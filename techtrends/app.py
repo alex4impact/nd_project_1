@@ -1,4 +1,5 @@
 import sqlite3
+import logging
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
@@ -74,7 +75,7 @@ def create():
 @app.route('/healthz')
 def healthcheck():
     response = app.response_class(
-            response=jsonify({"result":"OK - healthy"}),
+            response=json.dumps({"result":"OK - healthy"}),
             status=200,
             mimetype='application/json'
     )
@@ -88,8 +89,12 @@ def metrics():
     connection = get_db_connection()
     count_posts = connection.execute('SELECT COUNT(id) FROM posts').fetchone()
     connection.close()
+    data = {
+        "count_connections":db_connection_count,
+        "count_articles":[row for row in count_posts][0]
+    }
     response = app.response_class(
-            response=json.dumps({"db_connection_count": db_connection_count, "post_count": count_posts}),
+            response = json.dumps(data),
             status=200,
             mimetype='application/json'
     )
@@ -100,4 +105,6 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port='3111')
+    ## stream logs to a file
+    logging.basicConfig(filename='app.log',level=logging.DEBUG)
+    app.run(host='0.0.0.0', port='3111')
