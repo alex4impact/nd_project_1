@@ -45,7 +45,7 @@ def post(post_id):
         return render_template('404.html'), 404
     else:
         title = post['title']
-        app.logger.info(f'Article: { title }')
+        app.logger.info(f'Article retrieved: { title }')
         return render_template('post.html', post=post)
 
 # Define the About Us page
@@ -108,5 +108,5 @@ def metrics():
 # start the application on port 3111
 if __name__ == "__main__":
     ## stream logs to a file
-    logging.basicConfig(filename='app.log',level=logging.DEBUG)
+    logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p - -', filename='app.log',level=logging.DEBUG)
     app.run(host='0.0.0.0', port='3111')
