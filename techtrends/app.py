@@ -1,8 +1,7 @@
 import sqlite3
 import logging
 
-from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
-from werkzeug.exceptions import abort
+from flask import Flask, json, render_template, request, url_for, redirect, flash
 
 # global variable to count amount of connections made to the db
 db_connection_count = 0
@@ -84,6 +83,7 @@ def healthcheck():
             status=200,
             mimetype='application/json'
     )
+
     return response
 
 # return metrics related to amount of articles and live connections to the database
@@ -101,6 +101,7 @@ def metrics():
             status=200,
             mimetype='application/json'
     )
+
     return response
 
 
