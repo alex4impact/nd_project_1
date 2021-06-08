@@ -972,3 +972,18 @@ INFO:app:Status request successfull
 INFO:werkzeug:127.0.0.1 - - [08/Jun/2021 20:49:42] "[37mGET /healthz HTTP/1.1[0m" 200 -
 INFO:app:Status request successfull
 INFO:werkzeug:127.0.0.1 - - [08/Jun/2021 20:50:04] "[37mGET /healthz HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:app:Metrics request successfull
+INFO:werkzeug:127.0.0.1 - - [08/Jun/2021 20:56:17] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:Metrics request successfull
+INFO:werkzeug:127.0.0.1 - - [08/Jun/2021 20:56:20] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:Metrics request successfull
+INFO:werkzeug:127.0.0.1 - - [08/Jun/2021 23:27:48] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:Metrics request successfull
+INFO:werkzeug:127.0.0.1 - - [08/Jun/2021 23:27:49] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:Metrics request successfull
+INFO:werkzeug:127.0.0.1 - - [08/Jun/2021 23:27:50] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:Metrics request successfull
+INFO:werkzeug:127.0.0.1 - - [08/Jun/2021 23:27:50] "[37mGET /metrics HTTP/1.1[0m" 200 -
+INFO:app:Metrics request successfull
+INFO:werkzeug:127.0.0.1 - - [08/Jun/2021 23:27:50] "[37mGET /metrics HTTP/1.1[0m" 200 -

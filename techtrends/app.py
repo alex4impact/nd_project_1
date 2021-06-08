@@ -90,8 +90,8 @@ def metrics():
     count_posts = connection.execute('SELECT COUNT(id) FROM posts').fetchone()
     connection.close()
     data = {
-        "count_connections":db_connection_count,
-        "count_articles":[row for row in count_posts][0]
+        "db_connection_count":db_connection_count,
+        "post_count":[row for row in count_posts][0]
     }
     response = app.response_class(
             response = json.dumps(data),
