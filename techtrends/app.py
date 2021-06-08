@@ -42,13 +42,17 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      return render_template('404.html'), 404
+        app.logger.info('Article not existent')
+        return render_template('404.html'), 404
     else:
-      return render_template('post.html', post=post)
+        title = post['title']
+        app.logger.info(f'Article: { title }')
+        return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
+    app.logger.info('About Us page request successfull')
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -61,6 +65,7 @@ def create():
         if not title:
             flash('Title is required!')
         else:
+            app.logger.info(f'Article: {title}')
             connection = get_db_connection()
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
                          (title, content))
@@ -79,8 +84,6 @@ def healthcheck():
             status=200,
             mimetype='application/json'
     )
-
-    app.logger.info('Status request successfull')
     return response
 
 # return metrics related to amount of articles and live connections to the database
@@ -98,8 +101,6 @@ def metrics():
             status=200,
             mimetype='application/json'
     )
-
-    app.logger.info('Metrics request successfull')
     return response
 
 
