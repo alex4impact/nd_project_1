@@ -7,11 +7,23 @@ docker build -t techtrends .
 docker run -d -it -p 7111:3111 techtrends
 
 ## Docker commands used to get the application logs
-docker logs 1dd5bac2971c
+## Docker ps to list all running containers and get the container id
+## Docker exec with container id and cat command with log files
+docker ps
+docker exec d1dfb02b82cf cat app.log
 
-## Logs from the container running the TechTrends application
-* Serving Flask app "app" (lazy loading)
-* Environment: production
-  WARNING: This is a development server. Do not use it in a production deployment.
-  Use a production WSGI server instead.
-* Debug mode: off
+## Logs from the container running the TechTrends application   
+06/19/2021 06:02:28 AM - -  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+06/19/2021 06:02:35 AM - - 172.17.0.1 - - [19/Jun/2021 06:02:35] "GET / HTTP/1.1" 200 -
+06/19/2021 06:02:35 AM - - 172.17.0.1 - - [19/Jun/2021 06:02:35] "GET /static/css/main.css HTTP/1.1" 304 -
+06/19/2021 06:02:49 AM - - Article retrieved: Kubernetes Certification
+06/19/2021 06:02:49 AM - - 172.17.0.1 - - [19/Jun/2021 06:02:49] "GET /6 HTTP/1.1" 200 -
+06/19/2021 06:03:45 AM - - Article retrieved: 2020 CNCF Annual Report
+06/19/2021 06:03:45 AM - - 172.17.0.1 - - [19/Jun/2021 06:03:45] "GET /1 HTTP/1.1" 200 -
+06/19/2021 06:04:47 AM - - 172.17.0.1 - - [19/Jun/2021 06:04:47] "GET /create HTTP/1.1" 200 -
+06/19/2021 06:05:32 AM - - Article: Learning Cloud Native Architecture Applications with Udacity
+06/19/2021 06:05:32 AM - - 172.17.0.1 - - [19/Jun/2021 06:05:32] "POST /create HTTP/1.1" 302 -
+06/19/2021 06:05:32 AM - - 172.17.0.1 - - [19/Jun/2021 06:05:32] "GET / HTTP/1.1" 200 -
+06/19/2021 06:05:37 AM - - Article retrieved: Learning Cloud Native Architecture Applications with Udacity
+06/19/2021 06:05:37 AM - - 172.17.0.1 - - [19/Jun/2021 06:05:37] "GET /7 HTTP/1.1" 200 -
+06/19/2021 06:06:11 AM - - 172.17.0.1 - - [19/Jun/2021 06:06:11] "GET /metrics HTTP/1.1" 200 -
