@@ -11,6 +11,9 @@ db_connection_count = 0
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    # This variable makes reference to the global variable within the function 
+    # and adds 1 each time the function is called to present the amount of times 
+    # a connection to the database has been established in the metrics endpoint 
     global db_connection_count
     db_connection_count += 1
     return connection
@@ -107,6 +110,10 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-    ## stream logs to a file
+    ## stream logs to a file 
+    ## each time an existing article is retrieved, the title is recorded in the log line
+    ## each time a non-existing article is acessed and a 404 page is returned
+    ## each time the "About Us" page is retrieved
+    ## each time a new article is created, the title is recorded in the log line
     logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p - -', filename='app.log',level=logging.DEBUG)
     app.run(host='0.0.0.0', port='3111')
