@@ -8,7 +8,7 @@ docker run -d -it -p 7111:3111 techtrends
 
 ## Docker commands used to get the application logs
 ## Docker ps to list all running containers and get the container id
-## Docker exec with container id and cat command with log files
+## Docker exec with container id and cat command with log file to copy file at the terminal
 docker ps
 docker exec d1dfb02b82cf cat app.log
 
