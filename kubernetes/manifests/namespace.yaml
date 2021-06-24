@@ -5,3 +5,4 @@ kind: Namespace
 ## Set the parameters that make the object identifiable, such as its name, and labels.
 metadata:
   name: sandbox
+spec: {}
