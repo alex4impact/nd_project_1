@@ -41,7 +41,7 @@ spec:
         ## Set the image to be executed inside the container and image pull policy
         ## In this case, run the `techtrends` application in the latest version and
         ## only pull the image if it's not available on the current host.
-      - image: {{ .Values.image.repository ":" .Values.image.tag }}
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         name: techtrends
         ## Expose the port the container is listening on.
