@@ -1,5 +1,6 @@
 import sqlite3
 import logging
+import sys
 
 from flask import Flask, json, render_template, request, url_for, redirect, flash
 
@@ -115,5 +116,14 @@ if __name__ == "__main__":
     ## each time a non-existing article is acessed and a 404 page is returned
     ## each time the "About Us" page is retrieved
     ## each time a new article is created, the title is recorded in the log line
-    logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p - -', filename='app.log',level=logging.DEBUG)
+    # set logger to handle STDOUT and STDERR
+    logger = logging.getLogger("__name__")
+    logging.basicConfig(format='%(levelname)s:%(module)s: %(message)s', level=logging.DEBUG)
+
+    stdout_handler =  logging.StreamHandler(sys.stdout)
+    stderr_handler =  logging.StreamHandler(sys.stderr)
+
+    logger.addHandler(stdout_handler) 
+    logger.addHandler(stderr_handler) 
+
     app.run(host='0.0.0.0', port='3111')
