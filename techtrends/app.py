@@ -118,7 +118,7 @@ if __name__ == "__main__":
     ## each time a new article is created, the title is recorded in the log line
     # set logger to handle STDOUT and STDERR
     logger = logging.getLogger("__name__")
-    logging.basicConfig(format='%(levelname)s:%(module)s: %(message)s', level=logging.DEBUG)
+    logging.basicConfig(format='%(asctime)s %(levelname)s:%(module)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p - -', level=logging.DEBUG)
 
     stdout_handler =  logging.StreamHandler(sys.stdout)
     stderr_handler =  logging.StreamHandler(sys.stderr)
